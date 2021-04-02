@@ -3,4 +3,4 @@ Martian Robots
 
 # how to run the project
 - npm install
-- npm start
+- node martian_robots.js
