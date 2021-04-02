@@ -172,7 +172,7 @@ const main = () => {
   // Check the inputed position is in the coodinate.
   if (!checkStatus(pos)) {
     console.log("Position is outside of the coodinate. Input again.");
-    continue;
+    return;
   }
 
   // Input Instructions
