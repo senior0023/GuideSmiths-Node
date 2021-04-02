@@ -1,12 +1,12 @@
 const prompt = require("prompt-sync")({ sigint: true });
 
-// Input Coodinate information
-const coodinate_info = prompt("");
+// Input coordinate information
+const coordinate_info = prompt("Input coordinate: ");
 
-// Parse the coodinate information to position object
-const COODINATE = {
-  x: parseInt(coodinate_info.split(" ")[0]),
-  y: parseInt(coodinate_info.split(" ")[1]),
+// Parse the coordinate information to position object
+const COORDINATE = {
+  x: parseInt(coordinate_info.split(" ")[0]),
+  y: parseInt(coordinate_info.split(" ")[1]),
 };
 
 /**
@@ -91,7 +91,7 @@ const moveForwards = (pos) => {
       break;
   }
 
-  // Check the moved position is in the coodinate
+  // Check the moved position is in the coordinate
   if (checkStatus(pos)) {
     return pos;
   }
@@ -135,16 +135,16 @@ const setDefaultOrientation = (orientation) => {
 };
 
 /**
- * Check current position of the robot is in the coodinate
+ * Check current position of the robot is in the coordinate
  * @param {Object} pos  Current position ex. {x: 2, y: 3, orientation: 90, status: true}
- * @returns {Boolean} True if current position of the robot is in the coodinate, false for otherwise.
+ * @returns {Boolean} True if current position of the robot is in the coordinate, false for otherwise.
  */
 const checkStatus = (pos) => {
   if (
     pos.x >= 0 &&
-    pos.x <= COODINATE.x &&
+    pos.x <= COORDINATE.x &&
     pos.y >= 0 &&
-    pos.y <= COODINATE.y
+    pos.y <= COORDINATE.y
   ) {
     return true;
   }
@@ -159,7 +159,7 @@ const checkStatus = (pos) => {
  */
 const main = () => {
   // Input Position and orientation of the robot ex. 1 1 E
-  const initial_pos = prompt("");
+  const initial_pos = prompt("Input Position and Orientation: ");
 
   // Parse position information from inputed value
   let pos = {
@@ -169,20 +169,20 @@ const main = () => {
     status: true,
   };
 
-  // Check the inputed position is in the coodinate.
+  // Check the inputed position is in the coordinate.
   if (!checkStatus(pos)) {
-    console.log("Position is outside of the coodinate. Input again.");
+    console.log("Position is outside of the coordinate. Input again.");
     return;
   }
 
   // Input Instructions
-  const movement = prompt("");
+  const movement = prompt("Input Instructions: ");
 
   // Move as following instructions
   for (let i = 0; i < movement.length; i++) {
     pos = move(pos, movement[i]);
 
-    // Check current position is in the coodinates
+    // Check current position is in the coordinates
     if (!pos.status) {
       break;
     }
